@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Mantenimiento de Peliculas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <div class="mt-3 mb-3">
+        <h3>Editar Pelicula</h3>
+    </div>
+
+    <form th:object="${film}" th:action="@{/maintenance/edit-confirm}" method="post" onsubmit="return confirmUpdate()">
+
+        <div class="mb-3 row">
+            <label for="filmId" class="col-sm-3">Codigo</label>
+            <div class="col-sm-9">
+                <input type="text" id="filmId" th:field="*{filmId}" class="form-control" readonly>
+            </div>
+
+        </div>
+        <div class="mb-3 row">
+            <label for="title" class="col-sm-3">Titulo</label>
+            <div class="col-sm-9">
+                <input type="text" id="title" th:field="*{title}" class="form-control">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="description" class="col-sm-3">Descripcion</label>
+            <div class="col-sm-9">
+                <input type="text" id="description" th:field="*{description}" class="form-control">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="releaseYear" class="col-sm-3">Año de filmacion</label>
+            <div class="col-sm-9">
+                <input type="text" id="releaseYear" th:field="*{releaseYear}" class="form-control">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="rentalDuration" class="col-sm-3">Tiempo de alquiler (Dias)</label>
+            <div class="col-sm-9">
+                <input type="text" id="rentalDuration" th:field="*{rentalDuration}" class="form-control">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="rentalRate" class="col-sm-3">Precio de alquiler (USD)</label>
+            <div class="col-sm-9">
+                <input type="text" id="rentalRate" th:field="*{rentalRate}" class="form-control">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="length" class="col-sm-3">Duracion de la pelicula (Minutos)</label>
+            <div class="col-sm-9">
+                <input type="text" id="length" th:field="*{length}" class="form-control">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="replacementCost" class="col-sm-3">Costo de reemplazo (USD)</label>
+            <div class="col-sm-9">
+                <input type="text" id="replacementCost" th:field="*{replacementCost}" class="form-control">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="rating" class="col-sm-3">Categoria</label>
+            <div class="col-sm-9">
+                <input type="text" id="rating" th:field="*{rating}" class="form-control">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="specialFeatures" class="col-sm-3">Caracteristicas de la pelicula</label>
+            <div class="col-sm-9">
+                <input type="text" id="specialFeatures" th:field="*{specialFeatures}" class="form-control">
+            </div>
+        </div>
+
+
+        <div class="mb-3 row">
+            <label for="btnEdit" class="col-sm-3"></label>
+            <div class="col-sm-9">
+                <button type="submit" id="btnEdit" class="btn btn-primary w-25">
+                    Actualizar
+                </button>
+                <button type="button" id="btnCancel" class="btn btn-secondary w-25"
+                        onclick="location.href='/maintenance/start'">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    function confirmUpdate() {
+        return confirm("¿Está seguro de que desea actualizar esta película?");
+    }
+</script>
+
+</body>
+</html>
